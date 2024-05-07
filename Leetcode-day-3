@@ -1,0 +1,48 @@
+class Solution {
+public:
+    
+    ListNode* doubleIt(ListNode* head) {
+        /*unsigned number=0;
+        ListNode* t=head;
+        int length=0;
+        string str="";
+        while(t!=NULL){
+            number=(number*10)+t->val;
+            t=t->next;
+            length++;
+        }
+        number=number*2;
+        str=to_string(number);
+        length=str.length();
+        head=NULL;
+        while(length!=0){
+            int data=number%10;
+            ListNode* n=new ListNode(data);
+            n->next=head;
+            head=n;
+            length--;
+            number=number/10;
+            
+        }
+        return head;*/
+
+        if (head->val > 4) {
+            head = new ListNode(0, head);
+        }
+        
+        ListNode* temp = head;
+        while (temp != nullptr) {
+           
+            temp->val = (temp->val * 2) % 10;
+            
+            
+            if (temp->next != nullptr && temp->next->val > 4) {
+                temp->val++;
+            }
+            
+            temp = temp->next; // Move to the next node
+        }
+        return head;
+
+    }
+};
